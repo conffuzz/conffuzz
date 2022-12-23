@@ -16,8 +16,8 @@ Unikraft.io. It has been accepted to appear in NDSS'23.
 > Interface Vulnerabilities (CIVs).
 >
 > This paper provides an in-depth study of CIVs. We taxonomize
-> these issues and show that they affect all known compartmental-
-> ization approaches. We propose ConfFuzz, an in-memory fuzzer
+> these issues and show that they affect all known compartmentalization
+> approaches. We propose ConfFuzz, an in-memory fuzzer
 > specialized to detect CIVs at possible compartment boundaries.
 > We apply ConfFuzz to a set of 25 popular applications and
 > 36 possible compartment APIs, to uncover a wide data-set of
