@@ -18,7 +18,7 @@ or using ConfFuzz. This document is best read on
 [GitHub](https://github.com/conffuzz/conffuzz), with a Markdown viewer,
 or Markdown editor.
 
-**Link to the ConfFuzz paper data set: [Anonymous GitHub](https://anonymous.4open.science/r/conffuzz-data-76DA)**
+**Link to the ConfFuzz NDSS paper data set: [NDSS Data Set](https://github.com/conffuzz/conffuzz-ndss-data)**
 
 ## Table of Contents
 
