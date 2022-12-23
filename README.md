@@ -42,9 +42,7 @@ or using ConfFuzz. This document is best read on
 [GitHub](https://github.com/conffuzz/conffuzz), with a Markdown viewer, or
 Markdown editor.
 
-**Link to the ConfFuzz NDSS paper data set: [NDSS Data Set](https://github.com/conffuzz/conffuzz-ndss-data)**
-
-## Table of Contents
+## 0. Table of Contents & Links
 
 - [1. ConfFuzz High-Level Information](#1-conffuzz-high-level-information)
 - [2. Setting Up ConfFuzz](#2-setting-up-conffuzz)
@@ -54,6 +52,8 @@ Markdown editor.
 - [6. ConfFuzz Internals & Dev Tips](#6-conffuzz-internals--dev-tips)
 - [7. Known Issues](#7-known-issues)
 - [8. Pin Overhead Measurements](#8-pin-overhead-measurements)
+
+**Link to the ConfFuzz NDSS paper data set: [NDSS Data Set](https://github.com/conffuzz/conffuzz-ndss-data)**
 
 ## 1. ConfFuzz High-Level Information
 
