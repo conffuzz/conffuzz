@@ -1,0 +1,6 @@
+pintools
+*.out
+pin.log
+crashes
+fuzz
+*.swp

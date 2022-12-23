@@ -1,0 +1,3 @@
+[submodule "resources/docker-cache"]
+	path = resources/docker-cache
+	url = git@github.com:conffuzz/conffuzz.git

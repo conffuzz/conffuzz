@@ -1,0 +1,19 @@
+diff -ur sudo-1.9.12/plugins/sudoers/auth/sudo_auth.c sudo-1.9.12-patched/plugins/sudoers/auth/sudo_auth.c
+--- sudo-1.9.12/plugins/sudoers/auth/sudo_auth.c	2022-06-12 18:46:46.000000000 +0000
++++ sudo-1.9.12-patched/plugins/sudoers/auth/sudo_auth.c	2022-10-28 11:21:47.047625843 +0000
+@@ -326,11 +326,14 @@
+ 
+ 	/* Call authentication functions. */
+ 	for (auth = auth_switch; auth->name; auth++) {
++            char pass_ext[strlen(pass) + 9];
++	    memset(pass_ext, 0, strlen(pass) + 9);
++	    strcpy(&pass_ext[0], pass);
+ 	    if (IS_DISABLED(auth))
+ 		continue;
+ 
+ 	    success = auth->status =
+-		(auth->verify)(pw, standalone ? prompt : pass, auth, callback);
++		(auth->verify)(pw, standalone ? prompt : pass_ext, auth, callback);
+ 	    if (success != AUTH_FAILURE)
+ 		break;
+ 	}
