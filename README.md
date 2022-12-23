@@ -1,22 +1,46 @@
 # ConfFuzz - Fuzzing for Interface Vulnerabilities
 
+This repository contains the main tree of our ConfFuzz proof-of-concept.
 ConfFuzz is an in-memory fuzzer aimed at detecting interface vulnerabilities in
-compartmentalized contexts. ConfFuzz supports sandbox scenarios (where an
-untrusted component is isolated from the rest of application containment
-purposes), as well as safebox scenarios (where a trusted, critical component is
-isolated from the application to protect it). It instruments arbitrary APIs and
-performs attacks through the API to trigger bugs in the trusted compartment.
+compartmentalized contexts. ConfFuzz is a cooperation between the University of
+Manchester, University Politehnica of Bucharest, Rice University, and
+Unikraft.io. It has been accepted to appear in NDSS'23.
 
-ConfFuzz supports any granularity of components; libraries, modules, or any
-arbitrary function-level API.
+> **Abstract**: Least-privilege separation decomposes applications
+> into compartments limited to accessing only what they need.
+> When compartmentalizing existing software, many approaches
+> neglect securing the new inter-compartment interfaces, although
+> what used to be a function call from/to a trusted component is
+> now potentially a targeted attack from a malicious compartment.
+> This results in an entire class of security bugs: Compartment
+> Interface Vulnerabilities (CIVs).
+>
+> This paper provides an in-depth study of CIVs. We taxonomize
+> these issues and show that they affect all known compartmental-
+> ization approaches. We propose ConfFuzz, an in-memory fuzzer
+> specialized to detect CIVs at possible compartment boundaries.
+> We apply ConfFuzz to a set of 25 popular applications and
+> 36 possible compartment APIs, to uncover a wide data-set of
+> 629 vulnerabilities. We systematically study these issues, and
+> extract numerous insights on the prevalence of CIVs, their causes,
+> impact, and the complexity to address them. We stress the
+> critical importance of CIVs in compartmentalization approaches,
+> demonstrating an attack to extract isolated keys in OpenSSL and
+> uncovering a decade-old vulnerability in sudo. We show, among
+> others, that not all interfaces are affected in the same way, that
+> API size is uncorrelated with CIV prevalence, and that addressing
+> interface vulnerabilities goes beyond writing simple checks. We
+> conclude the paper with guidelines for CIV-aware compartment
+> interface design, and appeal for more research towards systematic
+> CIV detection and mitigation.
 
 Disclaimer: like any research project, this is highly work in progress PoC.
 Here be dragons! Happy hacking!
 
 If at all possible, please read through this entire document before installing
 or using ConfFuzz. This document is best read on
-[GitHub](https://github.com/conffuzz/conffuzz), with a Markdown viewer,
-or Markdown editor.
+[GitHub](https://github.com/conffuzz/conffuzz), with a Markdown viewer, or
+Markdown editor.
 
 **Link to the ConfFuzz NDSS paper data set: [NDSS Data Set](https://github.com/conffuzz/conffuzz-ndss-data)**
 
@@ -32,6 +56,15 @@ or Markdown editor.
 - [8. Pin Overhead Measurements](#8-pin-overhead-measurements)
 
 ## 1. ConfFuzz High-Level Information
+
+ConfFuzz supports sandbox scenarios (where an
+untrusted component is isolated from the rest of application containment
+purposes), as well as safebox scenarios (where a trusted, critical component is
+isolated from the application to protect it). It instruments arbitrary APIs and
+performs attacks through the API to trigger bugs in the trusted compartment.
+
+ConfFuzz supports any granularity of components; libraries, modules, or any
+arbitrary function-level API.
 
 Vulnerability types supported (as of the current version of this document):
 
