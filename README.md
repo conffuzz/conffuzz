@@ -53,11 +53,12 @@ Markdown editor.
 - [7. Known Issues](#7-known-issues)
 - [8. Pin Overhead Measurements](#8-pin-overhead-measurements)
 
-**Link to the ConfFuzz NDSS paper data set: [NDSS Data Set](https://github.com/conffuzz/conffuzz-ndss-data)**
+**Link to the ConfFuzz NDSS paper data set: [[NDSS Data Set]](https://github.com/conffuzz/conffuzz-ndss-data)**
 
 ## 1. ConfFuzz High-Level Information
 
-ConfFuzz supports sandbox scenarios (where an
+ConfFuzz is an in-memory fuzzer aimed at detecting interface vulnerabilities in
+compartmentalized contexts. ConfFuzz supports sandbox scenarios (where an
 untrusted component is isolated from the rest of application containment
 purposes), as well as safebox scenarios (where a trusted, critical component is
 isolated from the application to protect it). It instruments arbitrary APIs and
