@@ -1,5 +1,7 @@
 # ConfFuzz - Fuzzing for Interface Vulnerabilities
 
+[![](https://img.shields.io/badge/arXiv-paper-red)](https://arxiv.org/abs/2212.12904)
+
 This repository contains the main tree of our ConfFuzz proof-of-concept.
 ConfFuzz is an in-memory fuzzer aimed at detecting interface vulnerabilities in
 compartmentalized contexts. ConfFuzz is a cooperation between the University of
