@@ -7,44 +7,50 @@ PIN_HOME=$(mkfile_dir)/../../pintools
 # set this before running the false positive test, system dependent
 LIBRARY_DIR :=
 
+# dependency for all tests
+libexample := $(mkfile_dir)/../lib-example/libexample.so
+
 DEBUG_OPT := -d
 
 all: appexample workloadscripttest reentrancetest argptrtest callbacktest \
      falsepositivestest deepstructtest nonreproducibletest nonasantest run
 
-appexample:
+$(libexample):
+	make -C $(dir $@)
+
+appexample: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o appexample main.c -lexample
 
-reentrancetest:
+reentrancetest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o reentrancetest reentrance.c -lexample
 
-argptrtest:
+argptrtest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o argptrtest argptr.c -lexample
 
-callbacktest:
+callbacktest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o callbacktest callback.c -lexample
 
-workloadscripttest:
+workloadscripttest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o workloadscripttest workloadscript.c -lexample
 
-falsepositivestest:
+falsepositivestest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o falsepositivestest falsepositives.c -lexample
 
-deepstructtest:
+deepstructtest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o deepstructtest deepstruct.c -lexample
 
-nonreproducibletest:
+nonreproducibletest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o nonreproducibletest non-reproducible.c -lexample
 
-nonasantest:
+nonasantest: $(libexample)
 	gcc -g -L$(mkfile_dir)/../lib-example/ -I$(mkfile_dir)/../lib-example/include/ \
 		-O0 -fsanitize=address -Wall -o nonasantest non-asan.c -lexample
 
